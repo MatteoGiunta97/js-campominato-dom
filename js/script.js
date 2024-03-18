@@ -37,8 +37,6 @@ function createNewGame() {
 
         const square = generateSquare(thisNumber, numberOfCellsPerRow);
         square.addEventListener('click', function() {
-            // Faccio alert del numero
-            alert(thisNumber);
             // Aggiungo la classe clicked
             this.classList.add('ms-clicked');
         });
