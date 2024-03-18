@@ -54,18 +54,16 @@ function createNewGame() {
     let bombsArray = [];
     while (bombsArray.length < 16) {
         
-        let newNumber = numRandom(1,numberOfSquares);
+        let bombNumber = numRandom(1,numberOfSquares);
     
         // Inserisco i numeri digitati nell'array se non sono già presenti in esso
     
-        if (bombsArray.includes(newNumber) === false) {
+        if (bombsArray.includes(bombNumber) === false) {
     
-            bombsArray.push(newNumber);
+            bombsArray.push(bombNumber);
         }
     
     }
-    
-    console.log(bombsArray)
 
     // Per numberOfSquares volte voglio creare uno square
     for (let i = 1; i <= numberOfSquares; i++) {
@@ -73,8 +71,16 @@ function createNewGame() {
 
         const square = generateSquare(thisNumber, numberOfCellsPerRow);
         square.addEventListener('click', function() {
-            // Aggiungo la classe clicked
-            this.classList.add('ms-clicked');
+            // Aggiungo la classe clicked e clickedBomb, la cella si colora in bianco quando  
+            // non è bomba e in rosso se lo è
+            if (bombsArray.includes(thisNumber)) {
+
+                this.classList.add('ms-clickedBomb');
+            } else {
+
+                this.classList.add('ms-clicked');
+            }
+            
         });
         mainGrid.append(square);
     }
@@ -97,6 +103,7 @@ function generateSquare(number, cellsPerRow) {
 
     return newSquare;
 }
+
 
 // La funzione genera un numero intero random tra due parametri: min e max
 function numRandom(min, max) {
