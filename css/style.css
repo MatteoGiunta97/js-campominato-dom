@@ -17,3 +17,6 @@
 .ms-square.ms-clicked {
     background-color: white;
 }
+.ms-square.ms-clickedBomb {
+    background-color: red;
+}

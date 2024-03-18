@@ -32,13 +32,12 @@ function createNewGame() {
 
     // Quando l'utente clicca play leggo il valore della select
     const level = document.querySelector('#ms-level').value;
-
-    console.log(level);
     // se il valore della select è facile 100 celle (10 per riga)
     // se il valore della select è media 81 celle (9 per riga)
     // se il valore della select è difficle 49 celle (7 per riga)
     let numberOfSquares;
     let numberOfCellsPerRow;
+    
     if (level=== 'facile') {
         numberOfSquares = 100;
         numberOfCellsPerRow = 10;
@@ -50,7 +49,23 @@ function createNewGame() {
         numberOfCellsPerRow = 7;
     }
 
-    console.log(numberOfSquares);
+    // Creo un array bombe e inserisco 16 numeri random in un range da 1 fino al max 
+    // di square/difficoltà
+    let bombsArray = [];
+    while (bombsArray.length < 16) {
+        
+        let newNumber = numRandom(1,numberOfSquares);
+    
+        // Inserisco i numeri digitati nell'array se non sono già presenti in esso
+    
+        if (bombsArray.includes(newNumber) === false) {
+    
+            bombsArray.push(newNumber);
+        }
+    
+    }
+    
+    console.log(bombsArray)
 
     // Per numberOfSquares volte voglio creare uno square
     for (let i = 1; i <= numberOfSquares; i++) {
@@ -81,4 +96,9 @@ function generateSquare(number, cellsPerRow) {
     newSquare.style.height = `calc(100% / ${cellsPerRow})`;
 
     return newSquare;
+}
+
+// La funzione genera un numero intero random tra due parametri: min e max
+function numRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
