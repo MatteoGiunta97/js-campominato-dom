@@ -1,0 +1,19 @@
+#ms-grid {
+    margin: 0 auto;
+    border: 1px solid black;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.ms-square {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ms-square.ms-clicked {
+    background-color: white;
+}
